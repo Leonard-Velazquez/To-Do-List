@@ -12,7 +12,8 @@ import android.util.Log;
 public class DBHelper extends SQLiteOpenHelper{
 
     private static final int DATABASE_VERSION = 9;
-    private static final String DATABASE_NAME = "items.db";
+    //did not work with previous name and changing it worked
+    private static final String DATABASE_NAME = "itemz.db";
     private static final String TAG = "dbhelper";
 
     public DBHelper(Context context) {
@@ -26,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper{
                 Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION + " TEXT NOT NULL, " +
                 Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE, " +
                 //adding the category from the Contract into the DB Table.
-                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT " + ");";
+                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL" + ");";
 
         Log.d(TAG, "Create table SQL: " + queryString);
         db.execSQL(queryString);

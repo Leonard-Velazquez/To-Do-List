@@ -40,7 +40,7 @@ public class UpdateToDoFragment extends DialogFragment {
         args.putInt("day", day);
         args.putLong("id", id);
         args.putString("description", descrpition);
-        args.putString("catergory",category);
+        args.putString("category",category);
 
         f.setArguments(args);
 
@@ -67,10 +67,13 @@ public class UpdateToDoFragment extends DialogFragment {
         int day = getArguments().getInt("day");
         id = getArguments().getLong("id");
         String description = getArguments().getString("description");
+        String categories = getArguments().getString("category");
         dp.updateDate(year, month, day);
 
         //This returns the position of the selected category from the spinner.
-        final int position = spin.getSelectedItemPosition();
+        int position = spin.getSelectedItemPosition();
+        final String newCat = spin.getItemAtPosition(position).toString();
+        Log.d(TAG,newCat);
 
         toDo.setText(description);
 
@@ -80,7 +83,7 @@ public class UpdateToDoFragment extends DialogFragment {
             public void onClick(View v) {
                 UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
                 Log.d(TAG, "id: " + id);
-                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(),spin.getItemAtPosition(position).toString(), id);
+                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(),newCat, id);
                 UpdateToDoFragment.this.dismiss();
             }
         });

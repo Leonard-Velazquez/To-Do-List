@@ -82,6 +82,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             super(view);
             descr = (TextView) view.findViewById(R.id.description);
             due = (TextView) view.findViewById(R.id.dueDate);
+            cate = (TextView) view.findViewById(R.id.category);
             //storing the data
             spin = (Spinner) view.findViewById(R.id.spinner);
             view.setOnClickListener(this);
