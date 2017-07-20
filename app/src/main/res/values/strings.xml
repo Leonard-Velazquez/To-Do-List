@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ToDoList</string>
+
+    <!--the array that will have the types of categories-->
+    <string-array name="categories">
+        <item>School</item>
+        <item>Errand</item>
+        <item>Work</item>
+        <item>Personal</item>
+    </string-array>
 </resources>

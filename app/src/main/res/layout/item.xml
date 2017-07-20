@@ -17,5 +17,16 @@
         android:layout_height="wrap_content"
         android:textSize="14dp"
         android:text="06-04-2017"/>
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="Category"/>
+    <!--Adding a seperator for easier distinction-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#000000" />
 
 </LinearLayout>

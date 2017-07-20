@@ -14,6 +14,6 @@ public class Contract {
         public static final String COLUMN_NAME_DESCRIPTION = "description";
         public static final String COLUMN_NAME_DUE_DATE = "duedate";
         //adding the category of the item
-        public static final String COLUMN_NAME_CATERGORY = "category";
+        public static final String COLUMN_NAME_CATEGORY = "category";
     }
 }

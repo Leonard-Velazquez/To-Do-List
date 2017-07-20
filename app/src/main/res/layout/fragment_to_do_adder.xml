@@ -15,6 +15,19 @@
         android:layout_weight=".1"
         android:layout_marginBottom="10dp"
         android:hint="Enter To Do" />
+<!--Adding a text view to show that the spinner will do-->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="Category:"
+        android:layout_marginBottom="5dp"/>
+<!--The spinner that will have the categories for the item to choose-->
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/categories"/>
 
     <DatePicker
         android:id="@+id/datePicker"

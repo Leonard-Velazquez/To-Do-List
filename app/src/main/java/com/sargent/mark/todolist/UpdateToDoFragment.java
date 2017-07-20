@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.util.Calendar;
 
@@ -21,13 +22,15 @@ public class UpdateToDoFragment extends DialogFragment {
     private EditText toDo;
     private DatePicker dp;
     private Button add;
+    //adding the spinner as a private for later use.
+    private Spinner spin;
     private final String TAG = "updatetodofragment";
     private long id;
 
 
     public UpdateToDoFragment(){}
 
-    public static UpdateToDoFragment newInstance(int year, int month, int day, String descrpition, long id) {
+    public static UpdateToDoFragment newInstance(int year, int month, int day, String descrpition,String category, long id) {
         UpdateToDoFragment f = new UpdateToDoFragment();
 
         // Supply num input as an argument.
@@ -37,6 +40,7 @@ public class UpdateToDoFragment extends DialogFragment {
         args.putInt("day", day);
         args.putLong("id", id);
         args.putString("description", descrpition);
+        args.putString("catergory",category);
 
         f.setArguments(args);
 
@@ -45,7 +49,8 @@ public class UpdateToDoFragment extends DialogFragment {
 
     //To have a way for the activity to get the data from the dialog
     public interface OnUpdateDialogCloseListener {
-        void closeUpdateDialog(int year, int month, int day, String description, long id);
+        //adding the category inside for the DB
+        void closeUpdateDialog(int year, int month, int day, String description,String category, long id);
     }
 
     @Override
@@ -54,6 +59,8 @@ public class UpdateToDoFragment extends DialogFragment {
         toDo = (EditText) view.findViewById(R.id.toDo);
         dp = (DatePicker) view.findViewById(R.id.datePicker);
         add = (Button) view.findViewById(R.id.add);
+        //adding the spinner from the view.
+        spin = (Spinner) view.findViewById(R.id.spinner);
 
         int year = getArguments().getInt("year");
         int month = getArguments().getInt("month");
@@ -61,6 +68,9 @@ public class UpdateToDoFragment extends DialogFragment {
         id = getArguments().getLong("id");
         String description = getArguments().getString("description");
         dp.updateDate(year, month, day);
+
+        //This returns the position of the selected category from the spinner.
+        final int position = spin.getSelectedItemPosition();
 
         toDo.setText(description);
 
@@ -70,7 +80,7 @@ public class UpdateToDoFragment extends DialogFragment {
             public void onClick(View v) {
                 UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
                 Log.d(TAG, "id: " + id);
-                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id);
+                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(),spin.getItemAtPosition(position).toString(), id);
                 UpdateToDoFragment.this.dismiss();
             }
         });
