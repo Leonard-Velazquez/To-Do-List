@@ -49,15 +49,14 @@ public class AddToDoFragment extends DialogFragment{
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
         dp.updateDate(year, month, day);
-        //This returns the position of the selected category from the spinner.
-        final int position = spin.getSelectedItemPosition();
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OnDialogCloseListener activity = (OnDialogCloseListener) getActivity();
                 //insert the position of the spinner and insert into the database.
-                activity.closeDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(),spin.getItemAtPosition(position).toString());
+                activity.closeDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(),spin.getItemAtPosition(spin.getSelectedItemPosition()).toString());
                 AddToDoFragment.this.dismiss();
             }
         });
